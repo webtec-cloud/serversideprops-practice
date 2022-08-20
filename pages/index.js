@@ -2,16 +2,17 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
+import data from "./data.json";
 
-export async function getServerSideProps() {
-  const res = await fetch("http://jsonplaceholder.typicode.com/todos");
-  const data = await res.json();
-  return {
-    props: {
-      todos: data,
-    },
-  };
-}
+// export async function getServerSideProps() {
+//   const res = await fetch("http://jsonplaceholder.typicode.com/todos");
+//   const data = await res.json();
+//   return {
+//     props: {
+//       todos: data,
+//     },
+//   };
+// }
 
 export default function Home({ todos }) {
   // const [todos, settodos] = useState([]);
@@ -30,7 +31,7 @@ export default function Home({ todos }) {
 
   return (
     <div className={styles.container}>
-      {todos?.map((item) => (
+      {data.map((item) => (
         <div>
           <p>
             {item.id}:{item.title}
